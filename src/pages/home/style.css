@@ -29,6 +29,15 @@
     position: fixed;
    
 }
+#gif{
+    width: 100px;
+    height: 100px;
+}
+#le{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(131, 49, 49);
+}
 .borrar{
     text-align: center;
     background: linear-gradient(68.15deg, #051842 16.62%, #020714 85.61%);

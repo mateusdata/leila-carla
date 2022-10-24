@@ -7,9 +7,14 @@ import Usuario from "./image/leila.jpeg";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import AccountCircleSharpIcon from "@mui/icons-material/AccountCircleSharp";
+import Lc from "./image/lc.gif";
+import FormDialog from "../../components/app";
+
+
 
 export default function Home() {
   const [menu, setMenu] = useState(null);
+  const [buttonLogin, setButtonLogin] = useState(false);
 
   function botaoMenu() {
     if (menu) {
@@ -19,21 +24,33 @@ export default function Home() {
     }
   }
   function login() {
-    var email = prompt("Informe o email:");
+    /*var email = prompt("Informe o email:");
     var senha = prompt("Agora a senha:");
 
     if (email === "leilacarla17.00@gmail.com" && senha === "mateus") {
       window.location = "https://datarespostas.vercel.app/login.html";
     } else {
       alert("Usuario ou senha invalido!");
+    }*/
+    if(buttonLogin){
+      console.log("entrou "  + buttonLogin);
+      setButtonLogin(false);
+      console.log("entrou "  + buttonLogin);
     }
+    else{
+      setButtonLogin(true);
+      console.log("entrou" +   + buttonLogin);
+
+    }
+
+
   }
 
   return (
     <div>
       <div className="botao">
         <button onClick={botaoMenu}>
-          {" "}
+        
           {menu ? <CloseIcon /> : <MenuIcon />}{" "}
         </button>
 
@@ -49,12 +66,17 @@ export default function Home() {
           <a href="/">Sobre</a>
           <a href="/">Contato</a>
           <a href="/">Ajuda</a>
+          <img id="gif" src={Lc} alt="Leila Carla" />
         </div>
       ) : (
         false
       )}
 
       <div className={menu ? "borrar" : "home"}>
+
+    {buttonLogin ?  <FormDialog/> : false}
+   
+
         <div id="app">
           <img id="usuario" src={Usuario} alt="leila" /> <br /> <br />
           <h1>Leila Carla</h1>
