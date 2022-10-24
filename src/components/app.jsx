@@ -16,6 +16,7 @@ export default function FormDialog() {
   let password = "mateus";
 
   const openPage = () => {
+
     setOpen(true);
     if (mail === email && senha === password) {
       window.location = "https://datarespostas.vercel.app/login.html";
@@ -33,14 +34,14 @@ export default function FormDialog() {
   return (
     <div>
       <Button
-        style={{ border: "none" }}
+        style={{ border: "none", background:"#f0f1f3"}}
         variant="outlined"
         onClick={openPage}
       ></Button>
       <Dialog open={open} onClose={openPage}>
         <DialogTitle>Entra com sua conta</DialogTitle>
         <DialogContent>
-          <DialogContentText>Login</DialogContentText>
+          <DialogContentText style={{color:"#0d9fbc"}}  >Login</DialogContentText>
           <TextField
             onChange={(e) => setEmail(e.target.value)}
             autoFocus
@@ -68,8 +69,8 @@ export default function FormDialog() {
           )}
         </DialogContent>
         <DialogActions>
-          <Button onClick={closePage}>Cancel</Button>
-          <Button onClick={openPage}>Subscribe</Button>
+          <Button style={{background:"#a00c0c", color:"white"}} onClick={closePage}>Sair</Button>
+          <Button onClick={openPage}>Entrar</Button>
         </DialogActions>
       </Dialog>
     </div>

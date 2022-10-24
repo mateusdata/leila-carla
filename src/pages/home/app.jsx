@@ -24,14 +24,6 @@ export default function Home() {
     }
   }
   function login() {
-    /*var email = prompt("Informe o email:");
-    var senha = prompt("Agora a senha:");
-
-    if (email === "leilacarla17.00@gmail.com" && senha === "mateus") {
-      window.location = "https://datarespostas.vercel.app/login.html";
-    } else {
-      alert("Usuario ou senha invalido!");
-    }*/
     if(buttonLogin){
       console.log("entrou "  + buttonLogin);
       setButtonLogin(false);
