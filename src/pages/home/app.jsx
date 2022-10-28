@@ -55,8 +55,8 @@ export default function Home() {
 
       {menu ? (
         <div className="aba">
-          <a href="/">Sobre</a>
-          <a href="/">Contato</a>
+          <a href="mailto:carlateixeiraoficial@gmail.com.br?subject=Duvida - Divulgação de conteudo">Email</a>
+          <a href="/">Fotos</a>
           <a href="/">Ajuda</a>
           <img id="gif" src={Lc} alt="Leila Carla" />
         </div>
