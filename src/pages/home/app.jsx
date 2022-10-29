@@ -8,14 +8,26 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import AccountCircleSharpIcon from "@mui/icons-material/AccountCircleSharp";
 import Lc from "./image/lc.gif";
+import Pfoto from "./image/leila1.jpeg";
+import Sfoto from "./image/leila2.jpeg";
+import Tfoto from "./image/leila3.jpeg";
+import Niver from "./image/niver.jpeg";
+
 import FormDialog from "../../components/app";
-
-
 
 export default function Home() {
   const [menu, setMenu] = useState(null);
   const [buttonLogin, setButtonLogin] = useState(false);
+  const [updateImages, setUpdateImages] = useState(Usuario);
 
+  function atualizarImagens() {
+    let objFotos = [Pfoto, Usuario, Sfoto, Tfoto, Niver];
+
+     setInterval(() => {
+      let randomic = Math.floor(Math.random() * 5);
+      setUpdateImages(objFotos[randomic]);
+    }, 2000);
+  }
   function botaoMenu() {
     if (menu) {
       setMenu(false);
@@ -24,25 +36,20 @@ export default function Home() {
     }
   }
   function login() {
-    if(buttonLogin){
-      console.log("entrou "  + buttonLogin);
+    if (buttonLogin) {
+      console.log("entrou " + buttonLogin);
       setButtonLogin(false);
-      console.log("entrou "  + buttonLogin);
-    }
-    else{
+      console.log("entrou " + buttonLogin);
+    } else {
       setButtonLogin(true);
-      console.log("entrou" +   + buttonLogin);
-
+      console.log("entrou" + +buttonLogin);
     }
-
-
   }
 
   return (
     <div>
-      <div className="botao">
+      <div onLoad={atualizarImagens()} className="botao">
         <button onClick={botaoMenu}>
-        
           {menu ? <CloseIcon /> : <MenuIcon />}{" "}
         </button>
 
@@ -55,7 +62,9 @@ export default function Home() {
 
       {menu ? (
         <div className="aba">
-          <a href="mailto:carlateixeiraoficial@gmail.com.br?subject=Duvida - Divulgação de conteudo">Email</a>
+          <a href="mailto:carlateixeiraoficial@gmail.com.br?subject=Duvida - Divulgação de conteudo">
+            Email
+          </a>
           <a href="/">Fotos</a>
           <a href="/">Ajuda</a>
           <img id="gif" src={Lc} alt="Leila Carla" />
@@ -65,12 +74,16 @@ export default function Home() {
       )}
 
       <div className={menu ? "borrar" : "home"}>
-
-    {buttonLogin ?  <FormDialog/> : false}
-   
+        {buttonLogin ? <FormDialog /> : false}
 
         <div id="app">
-          <img id="usuario" src={Usuario} alt="leila" /> <br /> <br />
+          <img
+            onClick={atualizarImagens}
+            id="usuario"
+            src={updateImages}
+            alt="leila"
+          />{" "}
+          <br /> <br />
           <h1>Leila Carla</h1>
           <p>Me acompanhem nas outras redes</p>
         </div>
