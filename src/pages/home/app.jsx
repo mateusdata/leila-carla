@@ -12,15 +12,40 @@ import Pfoto from "./image/leila1.jpeg";
 import Sfoto from "./image/leila2.jpeg";
 import Tfoto from "./image/leila3.jpeg";
 import Niver from "./image/niver.jpeg";
-
 import FormDialog from "../../components/app";
 
+var data = new Date();
+//var data = new Date("December 17, 1995 03:08:08");
+let diaSemana = data.getDay();
+let objFotos = [Usuario, Sfoto, Pfoto, Usuario, Niver, Sfoto, Tfoto];
+let semana = [
+  "Domingo",
+  "Segunda-feira",
+  "Terça-feira",
+  "Quarta-feira",
+  "Quinta-feira",
+  "Sexta-feira",
+  "Sábado-feira"
+];
 export default function Home() {
   const [menu, setMenu] = useState(null);
   const [buttonLogin, setButtonLogin] = useState(false);
-  const [updateImages, setUpdateImages] = useState(Usuario);
+  const [updateImages, setUpdateImages] = useState(objFotos[diaSemana]);
 
   function atualizarImagens() {
+    let randomic = Math.floor(Math.random() * 6);
+    setUpdateImages(objFotos[randomic]);
+  }
+
+  function botaoMenu() {
+    if (menu) {
+      setMenu(false);
+    } else {
+      setMenu(true);
+    }
+  }
+
+  /*function atualizarImagens() {
     let objFotos = [Pfoto, Usuario, Sfoto, Tfoto, Niver];
 
      setInterval(() => {
@@ -34,21 +59,18 @@ export default function Home() {
     } else {
       setMenu(true);
     }
-  }
+  }*/
   function login() {
     if (buttonLogin) {
-      console.log("entrou " + buttonLogin);
       setButtonLogin(false);
-      console.log("entrou " + buttonLogin);
     } else {
       setButtonLogin(true);
-      console.log("entrou" + +buttonLogin);
     }
   }
 
   return (
     <div>
-      <div onLoad={atualizarImagens()} className="botao">
+      <div className="botao">
         <button onClick={botaoMenu}>
           {menu ? <CloseIcon /> : <MenuIcon />}{" "}
         </button>
@@ -86,6 +108,7 @@ export default function Home() {
           <br /> <br />
           <h1>Leila Carla</h1>
           <p>Me acompanhem nas outras redes</p>
+          <p style={{fontFamily:"verdana", padding:"5px"}}> { semana[diaSemana] + " - " + data.getHours()+":"+ data.toLocaleTimeString().toString().slice(0, -6)}</p>
         </div>
 
         <div className="acessoria">
