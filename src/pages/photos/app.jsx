@@ -6,16 +6,26 @@ import AccountCircleSharpIcon from "@mui/icons-material/AccountCircleSharp";
 import Lc from "../home/image/lc.gif";
 import Imagens from "../../components/imagem/app";
 import { Link } from "react-router-dom";
-//import foto1 from "../../components/imagem/image/pgfoto1.jpg";
-//import foto2 from "../../components/imagem/image/pgfoto2.jpg";
-//import foto3 from "../../components/imagem/image/pgfoto3.jpg";
-//import foto4 from "../../components/imagem/image/pgfoto4.jpg";
+import foto1 from "../../components/imagem/image/pgfoto1.jpg";
+import foto2 from "../../components/imagem/image/pgfoto2.jpg";
+import foto3 from "../../components/imagem/image/pgfoto3.jpg";
+import foto4 from "../../components/imagem/image/pgfoto4.jpeg";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
+
 
 //var data = new Date("December 17, 1995 03:08:08");
-
+const arrayFotos = [
+  foto3,
+  foto2,
+  foto4,
+  foto1,
+];
 export default function Fotosleila() {
   const [menu, setMenu] = useState(null);
   const [buttonLogin, setButtonLogin] = useState(false);
+  const [curtir, setCurtir] = useState(false)
+
 
   function botaoMenu() {
     if (menu) {
@@ -31,6 +41,15 @@ export default function Fotosleila() {
     } else {
       setButtonLogin(true);
     }
+  }
+  function curtirFoto(){
+    if(curtir){
+      setCurtir(false)
+    }
+    else{
+      setCurtir(true)
+    }
+   
   }
 
   return (
@@ -52,38 +71,28 @@ export default function Fotosleila() {
           <a href="mailto:carlateixeiraoficial@gmail.com.br?subject=Duvida - Divulgação de conteudo">
             Email
           </a>
-          <Link id="acessoria" to={"/"}>Home</Link> 
-          <a  href="https://instagram.com/geiselaynne?igshid=YmMyMTA2M2Y=">Assessoria</a>
+          <Link id="acessoria" to={"/"}>
+            Home
+          </Link>
+          <a href="https://instagram.com/geiselaynne?igshid=YmMyMTA2M2Y=">
+            Assessoria
+          </a>
           <img id="gif" src={Lc} alt="Leila Carla" />
         </div>
       ) : (
         false
       )}
-      <div className="fotos">
-        <Imagens className="im"/>
-        <Imagens className="im" />
-        <Imagens className="im" />
-        <Imagens className="im" />
-        <Imagens className="im" />
-        <Imagens className="im" />
-        <Imagens className="im" />
-        <Imagens className="im" />
-        <Imagens className="im" />
-        <Imagens className="im" />
-        <Imagens className="im" />
-        <Imagens className="im" />
-        <Imagens className="im" />
-        <Imagens className="im" />
-        <Imagens className="im" />
-        <Imagens className="im" />
-        <Imagens className="im" />
-        <Imagens className="im" />
-        <Imagens className="im" />
-        <Imagens className="im" />
-        <Imagens className="im" />
-        <Imagens className="im" />
-        <Imagens className="im" />
-        <Imagens className="im" />
+      <div  className="fotos">
+        
+        {arrayFotos.map((foto,index)=>{
+         return (
+          <div onClick={curtirFoto}>
+            < Imagens className="im" imagem={arrayFotos[index]} />
+            { curtir ? <FavoriteIcon style={{height: "40px",color: "red",width: "100%",}}/>: false}
+          </div>
+         )
+        })}
+       
       </div>
     </div>
   );
