@@ -1,0 +1,7 @@
+.imgVazia {
+    width: 350px;
+    height: 480px;
+    border: 2px red solid;
+    border-radius: 15px;
+    background-color: rgb(229, 233, 236);
+}

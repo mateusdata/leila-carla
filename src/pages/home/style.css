@@ -18,20 +18,25 @@ body{
     flex-direction: column;
     color: #cfd1d6;
     color: #020714  ;
+    border: solid rgb(228, 15, 0) 2px;
 
 }
 
 .aba {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 74%;
     height: 100vh;
     background-color: #0d172c;
     align-items: flex-tar;
     margin-left: -60px;
     position: fixed;
+    padding-right: 40px;
+    text-align: justify;
+    
 
 }
+
 
 #gif {
     width: 100px;

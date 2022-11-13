@@ -13,6 +13,7 @@ import Sfoto from "./image/leila2.jpeg";
 import Tfoto from "./image/leila3.jpeg";
 import Niver from "./image/niver.jpeg";
 import FormDialog from "../../components/app";
+import { Link } from "react-router-dom";
 
 var data = new Date();
 //var data = new Date("December 17, 1995 03:08:08");
@@ -25,7 +26,7 @@ let semana = [
   "Quarta-feira",
   "Quinta-feira",
   "Sexta-feira",
-  "Sábado-feira"
+  "Sábado",
 ];
 export default function Home() {
   const [menu, setMenu] = useState(null);
@@ -84,11 +85,11 @@ export default function Home() {
 
       {menu ? (
         <div className="aba">
-          <a href="mailto:carlateixeiraoficial@gmail.com.br?subject=Duvida - Divulgação de conteudo">
+          <a id="acessoria" href="mailto:carlateixeiraoficial@gmail.com.br?subject=Duvida - Divulgação de conteudo">
             Email
           </a>
-          <a href="/">Fotos</a>
-          <a href="/">Ajuda</a>
+          <Link id="acessoria" to={"/fotos"}>Fotos</Link> 
+          <a  href="https://instagram.com/geiselaynne?igshid=YmMyMTA2M2Y=">Assessoria</a>
           <img id="gif" src={Lc} alt="Leila Carla" />
         </div>
       ) : (
@@ -108,7 +109,13 @@ export default function Home() {
           <br /> <br />
           <h1>Leila Carla</h1>
           <p>Me acompanhem nas outras redes</p>
-          <p style={{fontFamily:"verdana", padding:"5px"}}> { semana[diaSemana] + " - " + data.getHours()+":"+ data.toLocaleTimeString().toString().slice(0, -6)}</p>
+          <p style={{ fontFamily: "verdana", padding: "5px" }}>
+            {" "}
+            {semana[diaSemana] +
+              " - " +
+              data.toLocaleTimeString().slice(0, -3) +
+              " 🕗"}
+          </p>
         </div>
 
         <div className="acessoria">

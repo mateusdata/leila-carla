@@ -1,0 +1,13 @@
+.fotos {
+    background-color: rgb(216, 205, 205);
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    border: solid red 2px;
+    margin: 0px;
+    padding-top: px;
+    padding-top: 10px;
+    gap: 10px;
+    flex-direction: column;
+}
+
