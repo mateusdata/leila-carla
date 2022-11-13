@@ -5,6 +5,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import AccountCircleSharpIcon from "@mui/icons-material/AccountCircleSharp";
 import Lc from "../home/image/lc.gif";
 import Imagens from "../../components/imagem/app";
+import { Link } from "react-router-dom";
+//import foto1 from "../../components/imagem/image/pgfoto1.jpg";
+//import foto2 from "../../components/imagem/image/pgfoto2.jpg";
+//import foto3 from "../../components/imagem/image/pgfoto3.jpg";
+//import foto4 from "../../components/imagem/image/pgfoto4.jpg";
 
 //var data = new Date("December 17, 1995 03:08:08");
 
@@ -47,38 +52,38 @@ export default function Fotosleila() {
           <a href="mailto:carlateixeiraoficial@gmail.com.br?subject=Duvida - Divulgação de conteudo">
             Email
           </a>
-          <a href="/">Fotos</a>
-          <a href="/">Ajuda</a>
+          <Link id="acessoria" to={"/"}>Home</Link> 
+          <a  href="https://instagram.com/geiselaynne?igshid=YmMyMTA2M2Y=">Assessoria</a>
           <img id="gif" src={Lc} alt="Leila Carla" />
         </div>
       ) : (
         false
       )}
       <div className="fotos">
-        <Imagens className="im" />
-        <Imagens className="im"/>
-        <Imagens className="im"/>
-        <Imagens className="im"/>
-        <Imagens className="im"/>
         <Imagens className="im"/>
         <Imagens className="im" />
-        <Imagens className="im"/>
-        <Imagens className="im"/>
-        <Imagens className="im"/>
-        <Imagens className="im"/>
-        <Imagens className="im"/>
         <Imagens className="im" />
-        <Imagens className="im"/>
-        <Imagens className="im"/>
-        <Imagens className="im"/>
-        <Imagens className="im"/>
-        <Imagens className="im"/>
         <Imagens className="im" />
-        <Imagens className="im"/>
-        <Imagens className="im"/>
-        <Imagens className="im"/>
-        <Imagens className="im"/>
-        <Imagens className="im"/>
+        <Imagens className="im" />
+        <Imagens className="im" />
+        <Imagens className="im" />
+        <Imagens className="im" />
+        <Imagens className="im" />
+        <Imagens className="im" />
+        <Imagens className="im" />
+        <Imagens className="im" />
+        <Imagens className="im" />
+        <Imagens className="im" />
+        <Imagens className="im" />
+        <Imagens className="im" />
+        <Imagens className="im" />
+        <Imagens className="im" />
+        <Imagens className="im" />
+        <Imagens className="im" />
+        <Imagens className="im" />
+        <Imagens className="im" />
+        <Imagens className="im" />
+        <Imagens className="im" />
       </div>
     </div>
   );
