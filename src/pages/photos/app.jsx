@@ -6,20 +6,31 @@ import AccountCircleSharpIcon from "@mui/icons-material/AccountCircleSharp";
 import Lc from "../home/image/lc.gif";
 import Imagens from "../../components/imagem/app";
 import { Link } from "react-router-dom";
-import foto1 from "../../components/imagem/image/pgfoto1.jpg";
+//import foto1 from "../../components/imagem/image/pgfoto1.jpg";
 import foto2 from "../../components/imagem/image/pgfoto2.jpg";
 import foto3 from "../../components/imagem/image/pgfoto3.jpg";
-import foto4 from "../../components/imagem/image/pgfoto4.jpeg";
+//import foto4 from "../../components/imagem/image/pgfoto4.jpeg";
+import foto5 from "../../components/imagem/image/pgfoto5.jpg";
+import foto6 from "../../components/imagem/image/pgfoto6.jpg";
+import foto7 from "../../components/imagem/image/pgfoto7.jpg";
+import foto8 from "../../components/imagem/image/pgfoto8.jpg";
+import foto9 from "../../components/imagem/image/pgfoto9.jpg";
+import foto10 from "../../components/imagem/image/pgfoto10.jpg";
+import foto11 from "../../components/imagem/image/pgfoto11.jpg";
+
+
 import FavoriteIcon from '@mui/icons-material/Favorite';
-
-
-
 //var data = new Date("December 17, 1995 03:08:08");
 const arrayFotos = [
   foto3,
-  foto2,
-  foto4,
-  foto1,
+  foto11,
+  foto5,
+  foto6,
+  foto7,
+  foto8,
+  foto9,
+  foto10,
+  foto2
 ];
 export default function Fotosleila() {
   const [menu, setMenu] = useState(null);
@@ -82,13 +93,12 @@ export default function Fotosleila() {
       ) : (
         false
       )}
-      <div  className="fotos">
-        
+      <div  className="fotos">    
         {arrayFotos.map((foto,index)=>{
          return (
           <div onClick={curtirFoto}>
-            < Imagens className="im" imagem={arrayFotos[index]} />
-            { curtir ? <FavoriteIcon style={{height: "40px",color: "red",width: "100%",}}/>: false}
+            < Imagens key={foto} onClick={curtirFoto} className="im" imagem={arrayFotos[index]} />
+            {curtir ? <FavoriteIcon style={{height: "40px",color: "red",width: "100%",}}/>: false}
           </div>
          )
         })}

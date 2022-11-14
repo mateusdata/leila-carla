@@ -22,7 +22,7 @@ export default function Imagens(props){
             <img  onClick={irParaInstagran} className='logo' src={Pgfoto4} alt="" /> 
             <p  id="pp">  _carla_diary </p>  
             <Avatar sx={{ bgcolor: deepOrange[500] }} style={{marginRight:"3px", fontSize:"12px", height:"30px", width:"30px"}}>LC</Avatar>
-            {<img className='imagemLeila' src={props.imagem} alt="" />}           
+            {<img className='imagemLeila' src={props.imagem} alt=""/>}           
         </div>
     );
 }
