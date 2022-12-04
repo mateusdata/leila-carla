@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -18,8 +18,8 @@ import foto9 from "../../components/imagem/image/pgfoto9.jpg";
 import foto10 from "../../components/imagem/image/pgfoto10.jpg";
 import foto11 from "../../components/imagem/image/pgfoto11.jpg";
 
-
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { PuffLoader } from "react-spinners";
 //var data = new Date("December 17, 1995 03:08:08");
 const arrayFotos = [
   foto3,
@@ -30,13 +30,21 @@ const arrayFotos = [
   foto8,
   foto9,
   foto10,
-  foto2
+  foto2,
 ];
 export default function Fotosleila() {
+  const [load, setLoad] = useState(true);
   const [menu, setMenu] = useState(null);
   const [buttonLogin, setButtonLogin] = useState(false);
-  const [curtir, setCurtir] = useState(false)
+  const [curtir, setCurtir] = useState(false);
 
+  useEffect(() => {
+    setTimeout(() => {
+      if (load) {
+        setLoad(false);
+      }
+    }, 1200);
+  }, [load]);
 
   function botaoMenu() {
     if (menu) {
@@ -53,18 +61,17 @@ export default function Fotosleila() {
       setButtonLogin(true);
     }
   }
-  function curtirFoto(){
-    if(curtir){
-      setCurtir(false)
+  function curtirFoto() {
+    if (curtir) {
+      setCurtir(false);
+    } else {
+      setCurtir(true);
     }
-    else{
-      setCurtir(true)
-    }
-   
   }
 
   return (
     <div>
+     
       <div className="botao">
         <button onClick={botaoMenu}>
           {menu ? <CloseIcon /> : <MenuIcon />}{" "}
@@ -76,7 +83,11 @@ export default function Fotosleila() {
           />
         </button>
       </div>
-
+      {load && (
+        <div className="loader">
+          <PuffLoader color="blue" size={80} />
+        </div>
+      )}
       {menu ? (
         <div className="aba">
           <a href="mailto:carlateixeiraoficial@gmail.com.br?subject=Duvida - Divulgação de conteudo">
@@ -93,16 +104,26 @@ export default function Fotosleila() {
       ) : (
         false
       )}
-      <div  className="fotos">    
-        {arrayFotos.map((foto,index)=>{
-         return (
-          <div onClick={curtirFoto}>
-            < Imagens key={foto} onClick={curtirFoto} className="im" imagem={arrayFotos[index]} />
-            {curtir ? <FavoriteIcon style={{height: "40px",color: "red",width: "100%",}}/>: false}
-          </div>
-         )
+      <div className="fotos" style={ load? {display:"none"}: {display:"flex"} } >
+        {arrayFotos.map((foto, index) => {
+          return (
+            <div onClick={curtirFoto}>
+              <Imagens
+                key={foto}
+                onClick={curtirFoto}
+                className="im"
+                imagem={arrayFotos[index]}
+              />
+              {curtir ? (
+                <FavoriteIcon
+                  style={{ height: "40px", color: "red", width: "100%" }}
+                />
+              ) : (
+                false
+              )}
+            </div>
+          );
         })}
-       
       </div>
     </div>
   );

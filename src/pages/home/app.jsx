@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import Instagran from "./image/instagram.png";
 import Kwai from "./image/kwai.png";
@@ -14,6 +14,7 @@ import Tfoto from "./image/leila3.jpeg";
 import Niver from "./image/niver.jpeg";
 import FormDialog from "../../components/app";
 import { Link } from "react-router-dom";
+import { ClockLoader, PuffLoader } from "react-spinners";
 
 var data = new Date();
 //var data = new Date("December 17, 1995 03:08:08");
@@ -29,10 +30,18 @@ let semana = [
   "Sábado",
 ];
 export default function Home() {
+  const [load, setLoad] = useState(true);
   const [menu, setMenu] = useState(null);
   const [buttonLogin, setButtonLogin] = useState(false);
   const [updateImages, setUpdateImages] = useState(objFotos[diaSemana]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      if (load) {
+        setLoad(false);
+      }
+    }, 500);
+  }, [load]); // eslint-disable-next-line
   function atualizarImagens() {
     let randomic = Math.floor(Math.random() * 6);
     setUpdateImages(objFotos[randomic]);
@@ -84,22 +93,34 @@ export default function Home() {
       </div>
 
       {menu ? (
-        <div className="aba">
-          <a id="acessoria" href="mailto:carlateixeiraoficial@gmail.com.br?subject=Duvida - Divulgação de conteudo">
+        <div className="aba" >
+          <a
+            id="acessoria"
+            href="mailto:carlateixeiraoficial@gmail.com.br?subject=Duvida - Divulgação de conteudo"
+          >
             Email
           </a>
-          <Link id="acessoria" to={"/fotos"}>Fotos</Link> 
-          <a  href="https://instagram.com/geiselaynne?igshid=YmMyMTA2M2Y=">Assessoria</a>
+          <Link id="acessoria" to={"/fotos"}>
+            Fotos
+          </Link>
+          <a href="https://instagram.com/geiselaynne?igshid=YmMyMTA2M2Y=">
+            Assessoria
+          </a>
           <img id="gif" src={Lc} alt="Leila Carla" />
         </div>
       ) : (
         false
       )}
-
-      <div className={menu ? "borrar" : "home"}>
+      {load && (
+            <div className="loader">
+              <PuffLoader color="blue" size={80} />
+            </div>
+          )}
+      <div style={ load? {display:"none"}: {display:"flex"} } className={menu ? "borrar" : "home"}>
         {buttonLogin ? <FormDialog /> : false}
 
-        <div id="app">
+        <div id="app" >
+         
           <img
             onClick={atualizarImagens}
             id="usuario"
@@ -109,13 +130,14 @@ export default function Home() {
           <br /> <br />
           <h1>Leila Carla</h1>
           <p>Me acompanhem nas outras redes</p>
-          <p style={{ fontFamily: "verdana", padding: "5px" }}>
+          <div  style={{  display:"flex", }}>
+          <p style={{ fontFamily: "verdana", padding: "15px", display:"flex", gap:"5px"}}>
             {" "}
             {semana[diaSemana] +
               " - " +
-              data.toLocaleTimeString().slice(0, -3) +
-              " 🕗"}
+              data.toLocaleTimeString().slice(0, -3)} <br /> <ClockLoader color="blue" size={20}/>
           </p>
+          </div>
         </div>
 
         <div className="acessoria">
